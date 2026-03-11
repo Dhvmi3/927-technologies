@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Black background -->
+  <rect width="32" height="32" fill="#000000"/>
+  <!-- "927." text — Syne-style bold condensed -->
+  <text
+    x="16"
+    y="22"
+    text-anchor="middle"
+    font-family="'Syne', 'Arial Black', sans-serif"
+    font-size="13"
+    font-weight="800"
+    letter-spacing="-0.5"
+    fill="#ffffff"
+  >927.</text>
+</svg>

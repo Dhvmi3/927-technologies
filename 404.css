@@ -1,0 +1,169 @@
+/* ============================================
+   927 TECHNOLOGIES — 404 PAGE STYLES
+   ============================================ */
+
+.not-found {
+  min-height: calc(100vh - var(--navbar-h));
+  padding-top: var(--navbar-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============================================
+   GIANT 404 BACKGROUND NUMBER
+   ============================================ */
+.not-found-number {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  gap: 0;
+}
+
+.not-found-number span {
+  font-family: var(--font-display);
+  font-size: clamp(18rem, 35vw, 36rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+}
+
+.n4-left  { animation: floatLeft  6s ease-in-out infinite; }
+.n4-zero  { animation: floatDown  6s ease-in-out infinite 0.3s; }
+.n4-right { animation: floatRight 6s ease-in-out infinite 0.6s; }
+
+@keyframes floatLeft {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50%       { transform: translateY(-12px) translateX(-8px); }
+}
+
+@keyframes floatDown {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(12px); }
+}
+
+@keyframes floatRight {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50%       { transform: translateY(-8px) translateX(8px); }
+}
+
+/* ============================================
+   CONTENT
+   ============================================ */
+.not-found-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2.5rem;
+  padding: 5rem 2rem;
+  max-width: 560px;
+  width: 100%;
+}
+
+.not-found-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.not-found-content .eyebrow {
+  margin-bottom: 0;
+}
+
+.not-found-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--white);
+}
+
+.not-found-title em {
+  font-style: normal;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.not-found-body {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  font-weight: 300;
+  line-height: 1.85;
+  max-width: 380px;
+}
+
+.not-found-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* ============================================
+   BOTTOM LINKS ROW
+   ============================================ */
+.not-found-links {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.not-found-links-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.not-found-links a {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.not-found-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--white);
+  transition: width 0.3s ease;
+}
+
+.not-found-links a:hover { color: var(--white); }
+.not-found-links a:hover::after { width: 100%; }
+
+.not-found-links span {
+  color: var(--border-light);
+  font-size: 0.7rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .not-found-number span {
+    font-size: clamp(10rem, 28vw, 18rem);
+  }
+}
