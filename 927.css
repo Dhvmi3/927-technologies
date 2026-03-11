@@ -3,6 +3,9 @@
    927.css — navbar, footer, buttons, variables
    ============================================ */
 
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
 :root {
   --bg:           #000000;
   --bg-alt:       #080808;
@@ -289,7 +292,13 @@ button {
 
 /* Mobile nav */
 @media (max-width: 768px) {
-  .navbar { padding: 0 1.5rem; }
+  .navbar {
+    padding: 0 1.5rem;
+    background: rgba(0,0,0,0.97);
+    border-bottom-color: var(--border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 
   .navbar-links {
     position: fixed;
