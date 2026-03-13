@@ -2,6 +2,10 @@
    927 TECHNOLOGIES — SHARED STYLES
    927.css — navbar, footer, buttons, variables
    ============================================ */
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
 :root {
   --bg:           #000000;
   --bg-alt:       #080808;
@@ -256,22 +260,39 @@ button {
   background: var(--text-dim);
 }
 
-/* Burger */
+/* ============================================
+   BURGER BUTTON
+   ============================================ */
 .burger {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   background: none;
-  border: none;
-  padding: 4px;
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 10px;
+  cursor: pointer;
+  width: 42px;
+  height: 36px;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease;
+  z-index: 1001;
+  position: relative;
+}
+
+.burger:hover {
+  border-color: rgba(255,255,255,0.4);
 }
 
 .burger span {
   display: block;
-  width: 22px;
+  width: 20px;
   height: 1.5px;
   background: var(--white);
-  transition: all 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+              opacity 0.25s ease;
+  transform-origin: center;
 }
 
 .burger.open span:nth-child(1) {
@@ -280,49 +301,108 @@ button {
 
 .burger.open span:nth-child(2) {
   opacity: 0;
+  transform: scaleX(0);
 }
 
 .burger.open span:nth-child(3) {
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
-/* Mobile nav */
+/* ============================================
+   MOBILE NAV
+   ============================================ */
 @media (max-width: 768px) {
+  :root { --navbar-h: 60px; }
+
+  /* Navbar always solid on mobile */
   .navbar {
-    padding: 0 1.5rem;
-    background: rgba(0,0,0,0.97);
-    border-bottom-color: var(--border);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    padding: 0 1.2rem;
+    background: #000 !important;
+    border-bottom: 1px solid var(--border) !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    height: 60px;
   }
 
+  .navbar-logo {
+    font-size: 1.3rem;
+    z-index: 1001;
+    position: relative;
+  }
+
+  /* Mobile dropdown menu */
   .navbar-links {
     position: fixed;
-    top: var(--navbar-h);
+    top: 60px;
     left: 0;
     right: 0;
-    background: rgba(0,0,0,0.97);
+    background: #000;
     border-bottom: 1px solid var(--border);
     flex-direction: column;
     gap: 0;
-    padding: 1rem 0;
+    padding: 0.5rem 0 1.2rem;
     transform: translateY(-110%);
-    transition: transform 0.35s var(--ease);
-    backdrop-filter: blur(12px);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+                opacity 0.3s ease;
+    z-index: 999;
+    pointer-events: none;
   }
 
   .navbar-links.open {
     transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
   }
 
   .navbar-links li {
     width: 100%;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .navbar-links li:last-child {
+    border-bottom: none;
   }
 
   .navbar-links a {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 1rem 1.5rem;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+  }
+
+  .navbar-links a::after {
+    display: none;
+  }
+
+  .navbar-links a.active {
+    color: var(--white);
+  }
+
+  .navbar-links a.active::before {
+    content: '◈';
+    font-size: 0.5rem;
+    color: var(--white);
+    margin-right: 0.5rem;
+  }
+
+  /* Mobile CTA inside menu */
+  .navbar-links::after {
+    content: 'START A PROJECT →';
+    display: block;
+    margin: 1rem 1.5rem 0;
+    padding: 0.8rem 1rem;
+    background: var(--white);
+    color: var(--bg);
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-align: center;
+    cursor: pointer;
   }
 
   .navbar-cta { display: none; }
