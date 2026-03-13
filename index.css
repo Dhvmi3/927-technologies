@@ -1,9 +1,6 @@
 /* ============================================
    927 TECHNOLOGIES — HOMEPAGE STYLES
-   ============================================ */
-
-/* ============================================
-   HERO
+   index.css — homepage only
    ============================================ */
 .hero {
   min-height: 100vh;
@@ -826,6 +823,8 @@
    ============================================ */
 @media (max-width: 768px) {
   .hero           { padding: calc(var(--navbar-h) + 2rem) 1.5rem 4rem; }
+
+  .hero-title { font-size: clamp(2.2rem, 11vw, 3.2rem); }
   .process        { padding: 6rem 1.5rem; }
   .services       { padding: 6rem 1.5rem; }
   .portfolio-preview { padding: 6rem 1.5rem; }
