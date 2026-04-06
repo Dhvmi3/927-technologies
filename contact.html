@@ -43,7 +43,7 @@
         <div class="contact-detail-item"><span class="contact-detail-label">Working Hours</span><span class="contact-detail-value">Mon – Sat, 8am – 8pm</span></div>
         <div class="contact-detail-item"><span class="contact-detail-label">Social</span><div class="contact-socials"><a href="https://instagram.com/927tech" target="_blank">Instagram</a><a href="https://x.com/927tech" target="_blank">X (Twitter)</a></div></div>
       </div>
-      <div class="contact-info-note"><span class="contact-info-note-icon">◈</span><p>Not sure what you need? Just describe your business and what you're trying to achieve. We'll figure out the rest together.</p></div>
+      <div class="contact-info-note"><p>Not sure what you need? Just describe your business and what you're trying to achieve. We'll figure out the rest together.</p></div>
     </div>
 
     <div class="contact-form-panel">
@@ -78,7 +78,7 @@
           <span class="field-error" id="projectTypeError">Please select at least one project type (max 2)</span>
         </div>
 
-        <!-- BUDGET: starts from $1000 -->
+        <!-- BUDGET -->
         <div class="form-group">
           <label for="budget">Budget Range <span>*</span></label>
           <select id="budget" name="budget" required>
@@ -93,13 +93,12 @@
         </div>
 
         <div class="form-group full"><label for="business">Tell Us About Your Business <span>*</span></label><input type="text" id="business" name="business" placeholder="e.g. A restaurant in Manchester looking to take online bookings" required /><span class="field-error" id="businessError">Please tell us about your business</span></div>
-        <div class="form-group full"><label for="message">Project Details & Goals</label><textarea id="message" name="message" rows="5" placeholder="What does the site need to do? Any inspiration sites? Anything specific you want included or avoided?"></textarea></div>
+        <div class="form-group full"><label for="message">Project Details & Goals <span>(optional)</span></label><textarea id="message" name="message" rows="5" placeholder="What does the site need to do? Any inspiration sites? Anything specific you want included or avoided?"></textarea></div>
         <div class="form-group full checkbox-group"><label class="checkbox-label"><input type="checkbox" id="consent" name="consent" required /><span class="checkbox-custom"></span><span class="checkbox-text">I agree to 927 Technologies storing my information to respond to this enquiry.</span></label><span class="field-error" id="consentError">Please accept to continue</span></div>
         <button type="submit" class="btn btn-primary form-submit" id="submitBtn">Send Enquiry</button>
       </form>
 
       <div class="form-success" id="formSuccess">
-        <div class="form-success-icon">◈</div>
         <h3>Message Received</h3>
         <p>We've got your enquiry and will respond to <span id="successEmail"></span> within 4 hours.</p>
         <a href="work.html" class="btn btn-outline" style="margin-top:1rem;">View Our Work →</a>
