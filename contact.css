@@ -438,6 +438,7 @@ a.contact-detail-value:hover {
   color: var(--text-dim);
 }
 
+
 /* ============================================
    RESPONSIVE — TABLET
    ============================================ */
@@ -453,6 +454,75 @@ a.contact-detail-value:hover {
   .contact-form-panel {
     padding: 5rem 3rem;
   }
+}
+/* ============================================
+   PROJECT TYPE CHECKBOXES (grid + spacing)
+   ============================================ */
+#projectTypeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+#projectTypeGrid .cat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+#projectTypeGrid .cat-item:hover {
+  border-color: var(--border-light);
+  background: var(--surface-alt);
+}
+
+#projectTypeGrid .cat-item input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#projectTypeGrid .cat-check {
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--border-light);
+  background: var(--surface);
+  flex-shrink: 0;
+  position: relative;
+}
+
+#projectTypeGrid .cat-item input:checked ~ .cat-check {
+  background: var(--white);
+  border-color: var(--white);
+}
+
+#projectTypeGrid .cat-item input:checked ~ .cat-check::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 5px;
+  height: 9px;
+  border: 1.5px solid var(--bg);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+#projectTypeGrid .cat-item input:checked ~ .cat-label {
+  color: var(--white);
+}
+
+#projectTypeGrid .cat-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 /* ============================================
