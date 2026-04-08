@@ -1,7 +1,4 @@
-/* ============================================
-   927 TECHNOLOGIES — HOMEPAGE SCRIPTS
-   index.js — homepage only
-   ============================================ */
+// HOMEPAGE JS
 
 const SUPABASE_URL = 'https://orjrqhmiyemmldewzamt.supabase.co'
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9yanJxaG1peWVtbWxkZXd6YW10Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMxNTg3ODYsImV4cCI6MjA4ODczNDc4Nn0.EGjrWMMS5ug4WnO7R8SHgkCa0P9dEw1uXdi98XnGiE8'
@@ -9,9 +6,7 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ============================================
-     1. SCROLL REVEALS
-     ============================================ */
+// SCROLL REVEALS
   window.revealOnScroll('.hero-tag',     { threshold: 0.1 })
   window.revealOnScroll('.hero-content', { threshold: 0.1 })
   window.revealOnScroll('.hero-stats',   { threshold: 0.1, delay: 0.2 })

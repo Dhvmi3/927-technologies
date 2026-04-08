@@ -1,12 +1,8 @@
-/* ============================================
-   927 TECHNOLOGIES — MODAL STYLES
-   modal.css — project viewer modal
-   Used on: index.html, work.html
-   ============================================ */
+/* modal.css — project viewer modal
+Used on: index.html, work.html */
+  
 
-/* ============================================
-   OVERLAY
-   ============================================ */
+/* OVERLAY */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -28,9 +24,7 @@
   pointer-events: all;
 }
 
-/* ============================================
-   MODAL
-   ============================================ */
+/* MODAL */
 .modal {
   width: 100%;
   max-width: 1100px;

@@ -1,7 +1,5 @@
-/* ============================================
-   927 TECHNOLOGIES — HOMEPAGE STYLES
-   index.css — homepage only
-   ============================================ */
+/* HOMEPAGE ONLY */
+
 .hero {
   min-height: 100vh;
   display: flex;
@@ -151,81 +149,7 @@
   color: var(--muted);
 }
 
-/* Scroll indicator */
-.hero-scroll {
-  position: absolute;
-  bottom: 2.5rem;
-  right: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.8rem;
-  z-index: 1;
-}
-
-.hero-scroll span {
-  font-size: 0.6rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--muted);
-  writing-mode: vertical-rl;
-}
-
-.hero-scroll-line {
-  width: 1px;
-  height: 50px;
-  background: linear-gradient(to bottom, var(--border), transparent);
-  animation: scrollLine 2s ease infinite;
-}
-
-@keyframes scrollLine {
-  0%   { transform: scaleY(0); transform-origin: top; }
-  50%  { transform: scaleY(1); transform-origin: top; }
-  51%  { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
-}
-
-/* ============================================
-   MARQUEE STRIP
-   ============================================ */
-.marquee-strip {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  overflow: hidden;
-  padding: 1rem 0;
-  background: var(--bg-alt);
-}
-
-.marquee-track {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  width: max-content;
-  animation: marquee 28s linear infinite;
-}
-
-.marquee-track span {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  white-space: nowrap;
-  font-weight: 500;
-}
-
-.marquee-dot {
-  color: var(--border-light) !important;
-  font-size: 0.4rem !important;
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* ============================================
-   PROCESS
-   ============================================ */
+/* PROCESS */
 .process {
   padding: 9rem 3rem;
   background: var(--bg);
@@ -293,9 +217,7 @@
   margin-top: 18px;
 }
 
-/* ============================================
-   SERVICES
-   ============================================ */
+/* SERVICES */
 .services {
   padding: 9rem 3rem;
   background: var(--bg-alt);
@@ -370,9 +292,7 @@
   margin-top: 0.5rem;
 }
 
-/* ============================================
-   PORTFOLIO PREVIEW
-   ============================================ */
+/* PORTFOLIO REVIEW */
 .portfolio-preview {
   padding: 9rem 3rem;
   background: var(--bg);
@@ -520,9 +440,7 @@
   font-size: 0.85rem;
 }
 
-/* ============================================
-   PRICING
-   ============================================ */
+/* PRICING */
 .pricing {
   padding: 9rem 3rem;
   background: var(--bg-alt);
@@ -650,98 +568,7 @@
   color: var(--border-light);
 }
 
-/* ============================================
-   TESTIMONIALS
-   ============================================ */
-.testimonials {
-  padding: 9rem 3rem;
-  background: var(--bg);
-}
-
-.testimonials-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.testimonials-inner .eyebrow { margin-bottom: 0.8rem; }
-.testimonials-inner .section-title { margin-bottom: 4rem; }
-
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  align-items: start;
-}
-
-.testimonial-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 2.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.testimonial-card-featured {
-  background: var(--surface-alt);
-  border-color: var(--border-light);
-  transform: translateY(-8px);
-}
-
-.testimonial-stars {
-  font-size: 0.7rem;
-  color: var(--white);
-  letter-spacing: 0.1em;
-}
-
-.testimonial-body {
-  font-size: 0.88rem;
-  color: var(--text-dim);
-  line-height: 1.95;
-  font-weight: 300;
-  font-style: italic;
-  flex: 1;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--border);
-}
-
-.testimonial-avatar {
-  width: 36px;
-  height: 36px;
-  background: var(--surface-alt);
-  border: 1px solid var(--border-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: var(--text-dim);
-  letter-spacing: 0.05em;
-  flex-shrink: 0;
-}
-
-.testimonial-author strong {
-  display: block;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--white);
-  font-family: var(--font-display);
-}
-
-.testimonial-author span {
-  font-size: 0.7rem;
-  color: var(--muted);
-}
-
-/* ============================================
-   CTA BANNER
-   ============================================ */
+/* CTA BANNER */
 .cta-banner {
   padding: 9rem 3rem;
   background: var(--bg-alt);
@@ -792,9 +619,7 @@
   pointer-events: none;
 }
 
-/* ============================================
-   RESPONSIVE — TABLET
-   ============================================ */
+/* RESPONSIVENESS - TABLET */
 @media (max-width: 1024px) {
   .hero           { padding: calc(var(--navbar-h) + 3rem) 2rem 5rem; }
   .process        { padding: 7rem 2rem; }
@@ -818,9 +643,7 @@
   .testimonial-card-featured { transform: none; }
 }
 
-/* ============================================
-   RESPONSIVE — MOBILE
-   ============================================ */
+/* RESPONSIVENESS - MOBILE */
 @media (max-width: 768px) {
   .hero           { padding: calc(var(--navbar-h) + 2rem) 1.5rem 4rem; }
 

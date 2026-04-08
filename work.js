@@ -1,6 +1,5 @@
-/* ============================================
-   927 TECHNOLOGIES — WORK PAGE SCRIPTS
-   ============================================ */
+// WORK
+
 const SUPABASE_URL = 'https://orjrqhmiyemmldewzamt.supabase.co'
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9yanJxaG1peWVtbWxkZXd6YW10Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMxNTg3ODYsImV4cCI6MjA4ODczNDc4Nn0.EGjrWMMS5ug4WnO7R8SHgkCa0P9dEw1uXdi98XnGiE8'
 

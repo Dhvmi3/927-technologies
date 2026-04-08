@@ -1,10 +1,6 @@
-/* ============================================
-   927 TECHNOLOGIES — WORK PAGE STYLES
-   ============================================ */
+   /* 927 TECHNOLOGIES — WORK PAGE STYLES */
 
-/* ============================================
-   PAGE HERO
-   ============================================ */
+/* PAGE HERO */
 .work-hero {
   padding: calc(var(--navbar-h) + 6rem) 3rem 5rem;
   border-bottom: 1px solid var(--border);
