@@ -1,0 +1,78 @@
+ /* 927 TECHNOLOGIES — PRIVACY POLICY PAGE STYLES */
+
+.privacy-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: calc(var(--navbar-h) + 3rem) 1.5rem 4rem;
+}
+
+.privacy-content h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.privacy-content .last-updated {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.5rem;
+}
+
+.privacy-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin: 2.5rem 0 1rem;
+}
+
+.privacy-content p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+
+.privacy-content ul {
+  list-style: none;
+  margin: 1rem 0 1.5rem;
+}
+
+.privacy-content li {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.privacy-content li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--border-light);
+}
+
+.privacy-content a {
+  color: var(--white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.privacy-content a:hover {
+  color: var(--text-dim);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .privacy-content {
+    padding: calc(var(--navbar-h) + 2rem) 1.5rem 3rem;
+  }
+}
