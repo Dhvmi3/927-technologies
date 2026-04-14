@@ -1,4 +1,4 @@
-   /* 927 TECHNOLOGIES — WORK PAGE STYLES */
+   /* WORK PAGE STYLES */
 
 /* PAGE HERO */
 .work-hero {
@@ -222,6 +222,15 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+/* Load More Button */
+.load-more-btn {
+  margin-top: 2rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 200px;
 }
 
 /* Loading + empty states */

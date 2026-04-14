@@ -1,6 +1,4 @@
-/* ============================================
-   927 TECHNOLOGIES — CONTACT PAGE SCRIPTS
-   ============================================ */
+//  927 TECHNOLOGIES — CONTACT PAGE
 
 document.addEventListener('DOMContentLoaded', () => {
 

@@ -6,27 +6,34 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 
 document.addEventListener('DOMContentLoaded', () => {
 
-// SCROLL REVEALS
-  window.revealOnScroll('.hero-tag',     { threshold: 0.1 })
-  window.revealOnScroll('.hero-content', { threshold: 0.1 })
-  window.revealOnScroll('.hero-stats',   { threshold: 0.1, delay: 0.2 })
+  // Helper to safely call revealOnScroll if it exists
+  const safeReveal = (selector, options) => {
+    if (typeof window.revealOnScroll === 'function') {
+      window.revealOnScroll(selector, options)
+    }
+  }
 
-  window.revealOnScroll('.process-header',  { threshold: 0.15 })
-  window.revealOnScroll('.process-step',    { threshold: 0.1, stagger: 0.12 })
+  // SCROLL REVEALS (guarded)
+  safeReveal('.hero-tag',     { threshold: 0.1 })
+  safeReveal('.hero-content', { threshold: 0.1 })
+  safeReveal('.hero-stats',   { threshold: 0.1, delay: 0.2 })
 
-  window.revealOnScroll('.services-header', { threshold: 0.15 })
-  window.revealOnScroll('.service-card',    { threshold: 0.08, stagger: 0.07 })
+  safeReveal('.process-header',  { threshold: 0.15 })
+  safeReveal('.process-step',    { threshold: 0.1, stagger: 0.12 })
 
-  window.revealOnScroll('.portfolio-preview-header', { threshold: 0.15 })
+  safeReveal('.services-header', { threshold: 0.15 })
+  safeReveal('.service-card',    { threshold: 0.08, stagger: 0.07 })
 
-  window.revealOnScroll('.pricing-header',  { threshold: 0.15 })
-  window.revealOnScroll('.pricing-card',    { threshold: 0.1, stagger: 0.1 })
+  safeReveal('.portfolio-preview-header', { threshold: 0.15 })
 
-  window.revealOnScroll('.testimonials-inner .eyebrow',       { threshold: 0.15 })
-  window.revealOnScroll('.testimonials-inner .section-title', { threshold: 0.15, delay: 0.05 })
-  window.revealOnScroll('.testimonial-card',                  { threshold: 0.1, stagger: 0.1 })
+  safeReveal('.pricing-header',  { threshold: 0.15 })
+  safeReveal('.pricing-card',    { threshold: 0.1, stagger: 0.1 })
 
-  window.revealOnScroll('.cta-banner-inner', { threshold: 0.2 })
+  safeReveal('.testimonials-inner .eyebrow',       { threshold: 0.15 })
+  safeReveal('.testimonials-inner .section-title', { threshold: 0.15, delay: 0.05 })
+  safeReveal('.testimonial-card',                  { threshold: 0.1, stagger: 0.1 })
+
+  safeReveal('.cta-banner-inner', { threshold: 0.2 })
 
 
   /* ============================================
@@ -76,53 +83,23 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }, { threshold: 0.5 })
 
-  statNumbers.forEach(el => statsObserver.observe(el))
+  statNumbers.forEach(el => {
+    const rect = el.getBoundingClientRect()
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0
+    if (isVisible) {
+      countUp(el)
+    } else {
+      statsObserver.observe(el)
+    }
+  })
 
 
   /* ============================================
-     4. PORTFOLIO — Fetch from Supabase
-     Shows latest 6 projects on homepage
+     4. PORTFOLIO PREVIEW — Fixed count, no Load More
      ============================================ */
   const portfolioGrid = document.getElementById('portfolioGrid')
+  const getBatchSize = () => window.innerWidth < 768 ? 3 : 6
 
-  const fetchProjects = async () => {
-    if (SUPABASE_URL === 'PASTE_SUPABASE_URL_HERE') {
-      renderPlaceholders()
-      return
-    }
-
-    try {
-      const res = await fetch(
-        `${SUPABASE_URL}/rest/v1/projects?select=*&order=created_at.desc&limit=6`,
-        {
-          headers: {
-            'apikey':        SUPABASE_KEY,
-            'Authorization': `Bearer ${SUPABASE_KEY}`,
-            'Content-Type':  'application/json'
-          }
-        }
-      )
-
-      if (!res.ok) throw new Error('Failed to fetch')
-
-      const projects = await res.json()
-
-      if (!projects.length) {
-        portfolioGrid.innerHTML = `<div class="portfolio-empty"><p>Projects coming soon.</p></div>`
-        return
-      }
-
-      renderProjects(projects)
-
-    } catch (err) {
-      console.error('Supabase fetch error:', err)
-      portfolioGrid.innerHTML = `<div class="portfolio-empty"><p>Could not load projects.</p></div>`
-    }
-  }
-
-  // ============================================
-  // Project showcase
-  // ============================================
   const buildCard = (p, showPlaceholder = false) => {
     const primaryCategory = p.category
       ? p.category.split(',')[0].trim()
@@ -149,9 +126,22 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>`
   }
 
+  const attachCardListeners = () => {
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => {
+        openModal(
+          card.getAttribute('data-url'),
+          card.getAttribute('data-name')
+        )
+      })
+    })
+  }
+
   const renderProjects = (projects) => {
     portfolioGrid.innerHTML = projects.map(p => buildCard(p)).join('')
-    window.revealOnScroll('.project-card', { threshold: 0.08, stagger: 0.08 })
+    if (typeof window.revealOnScroll === 'function') {
+      window.revealOnScroll('.project-card', { threshold: 0.08, stagger: 0.08 })
+    }
     attachCardListeners()
   }
 
@@ -163,9 +153,49 @@ document.addEventListener('DOMContentLoaded', () => {
       { name: 'NeonVault',     category: 'Gaming Store', url: 'https://neonvaults.netlify.app',        thumbnail: '' },
       { name: 'Aurum Resort',  category: 'Luxury Hotel', url: 'https://aurumresortandspa.netlify.app', thumbnail: '' },
     ]
-    portfolioGrid.innerHTML = placeholders.map(p => buildCard(p, true)).join('')
-    window.revealOnScroll('.project-card', { threshold: 0.08, stagger: 0.08 })
-    attachCardListeners()
+    const batchSize = getBatchSize()
+    renderProjects(placeholders.slice(0, batchSize))
+  }
+
+  const fetchProjects = async () => {
+    if (SUPABASE_URL === 'PASTE_SUPABASE_URL_HERE') {
+      renderPlaceholders()
+      return
+    }
+
+    try {
+      const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/projects?select=*&order=created_at.desc&limit=6`,
+        {
+          headers: {
+            'apikey':        SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`,
+            'Content-Type':  'application/json'
+          }
+        }
+      )
+
+      if (!res.ok) {
+        const errorText = await res.text()
+        console.error('Supabase fetch failed:', res.status, errorText)
+        throw new Error(`HTTP ${res.status}`)
+      }
+
+      const allProjects = await res.json()
+
+      if (!allProjects.length) {
+        portfolioGrid.innerHTML = `<div class="portfolio-empty"><p>Projects coming soon.</p></div>`
+        return
+      }
+
+      const batchSize = getBatchSize()
+      const previewProjects = allProjects.slice(0, batchSize)
+      renderProjects(previewProjects)
+
+    } catch (err) {
+      console.error('Supabase fetch error:', err)
+      portfolioGrid.innerHTML = `<div class="portfolio-empty"><p>Could not load projects. Check console for details.</p></div>`
+    }
   }
 
   fetchProjects()
@@ -190,17 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
     modalOverlay.classList.remove('open')
     document.body.style.overflow = ''
     setTimeout(() => { modalIframe.src = '' }, 500)
-  }
-
-  const attachCardListeners = () => {
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('click', () => {
-        openModal(
-          card.getAttribute('data-url'),
-          card.getAttribute('data-name')
-        )
-      })
-    })
   }
 
   modalClose.addEventListener('click', closeModal)
